@@ -218,9 +218,9 @@ a {
     color: $primary-color;
     border: 1px solid $primary-color;
     background: #FFFFFF;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
     padding: 10px 15px;
     text-transform: uppercase;
 
@@ -261,6 +261,7 @@ a {
   .app-file-remove {
     border: 0 none;
     padding: 3px;
+    color: red;
     font-size: 14px;
     font-weight: 300;
     background: none;
@@ -273,6 +274,15 @@ a {
 
 .error {
   color: $danger-color;
+}
+
+.form-error {
+  color: $danger-color;
+  background-color: rgba(255, 105, 91, 0.16);
+  padding: 8px;
+  margin-top: 10px;
+  text-align: center;
+  border-radius: 2px;
 }
 
 .app-home-uploading-icon {
