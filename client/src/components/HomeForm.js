@@ -83,9 +83,9 @@ class HomeForm extends Component {
 
     formSubmit = event => {
         event.preventDefault();
-        upload(this.state.form, (event) => {
+        upload(this.state.form/* , (event) => {
             console.log('upload callback', event);
-        })
+        } */)
     };
 
     render() {

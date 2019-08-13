@@ -17,7 +17,6 @@ const upload = (form, callback = () => { }) => {
 
   const config = {
     uploadProgress: (event) => {
-      console.log('event', event);
       return callback({
         type: 'onUploadProgress',
         payload: event
