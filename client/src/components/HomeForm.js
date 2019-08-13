@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-/* import _ from 'lodash'; */
+import upload from '../utils/upload';
 
 class HomeForm extends Component {
     state = {
@@ -83,15 +83,16 @@ class HomeForm extends Component {
 
     formSubmit = event => {
         event.preventDefault();
-        console.log(this.state.form);
+        upload(this.state.form, (event) => {
+            console.log('upload callback', event);
+        })
     };
 
     render() {
         const { form } = this.state;
         const { errors } = this.state;
         const { files } = form;
-        const isEnabled = form.to.length > 0 && form.from.length > 0;
-        console.log(this.state.form.files);
+        const isEnabled = form.to.length > 0 && form.from.length > 0 && form.files.length > 0;
         return (
             <div className='app-card'>
                 <form onSubmit={this.formSubmit} noValidate>
@@ -130,14 +131,14 @@ class HomeForm extends Component {
                         <div className="app-card-content-inner">
                             <div className="app-form-item">
                                 <label>Send to</label>
-                                <input onChange={this.onTextChange} value={form.to} name='to' placeholder='Email address' type='text' id='to' noValidate />
+                                <input onChange={this.onTextChange} value={form.to} name='to' placeholder='Email address' type='text' id='to' />
                                 {errors.to.length > 0 &&
                                     <p className='form-error'>{errors.to}</p>}
                             </div>
 
                             <div className="app-form-item">
                                 <label>From</label>
-                                <input onChange={this.onTextChange} value={form.from} name='from' placeholder='Your email address' type='text' id='from' noValidate />
+                                <input onChange={this.onTextChange} value={form.from} name='from' placeholder='Your email address' type='text' id='from' />
                                 {errors.from.length > 0 &&
                                     <p className='form-error'>{errors.from}</p>}
                             </div>
