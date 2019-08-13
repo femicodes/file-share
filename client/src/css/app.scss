@@ -234,6 +234,10 @@ a {
       border: 0 none;
       color: $primary-color;
     }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
   }
 }
 
@@ -260,11 +264,16 @@ a {
 
   .app-file-remove {
     border: 0 none;
-    padding: 3px;
+    padding: 2px;
     color: red;
-    font-size: 14px;
-    font-weight: 300;
-    background: none;
+    font-size: 12px;
+    font-weight: 700;
+    background: #FBE4E5;
+    border-radius: 20px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    outline: 0;
   }
 }
 
