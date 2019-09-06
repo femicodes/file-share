@@ -223,6 +223,7 @@ a {
     border-radius: 2px;
     padding: 10px 15px;
     text-transform: uppercase;
+    outline: none;
 
     &.primary {
       background: $primary-color;
@@ -349,10 +350,10 @@ a {
 .app-progress {
   background: rgba(241, 248, 254, 1);
   border: 1px solid rgba(178, 216, 248, 1);
-  height: 15px;
-  line-height: 15px;
+  height: 10px;
+  line-height: 10px;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 3px;
   margin: 10px 0 10px 0;
   position: relative;
   overflow: hidden;
@@ -370,6 +371,7 @@ a {
 
 .app-upload-cancel-button {
   margin-top: 50px;
+  outline: none;
 }
 
 .app-text-center {
@@ -394,6 +396,7 @@ a {
 
   button {
     margin: 10px 0;
+    outline: none;
   }
 }
 
@@ -504,6 +507,7 @@ a {
 .app-download-actions {
   button {
     margin: 10px 0;
+    outline: none;
   }
 }
 
@@ -596,6 +600,7 @@ a {
   .app-form-actions {
     button {
       margin: 10px 0;
+      outline: none;
     }
   }
 
@@ -608,11 +613,13 @@ a {
     right: 20px;
     top: 20px;
     z-index: 1002;
+    outline: none;
   }
 }
 
 .user-signin-button {
   cursor: pointer;
+  outline: none;
 }
 
 .app-message {

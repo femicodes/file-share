@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import upload from '../utils/upload';
 
 class HomeForm extends Component {
     state = {
         form: {
-            to: '',
-            from: '',
-            message: '',
+            to: 'femi@gmail.com',
+            from: 'code@gmail.com',
+            message: 'yess',
             files: []
         },
         errors: {
@@ -83,9 +84,11 @@ class HomeForm extends Component {
 
     formSubmit = event => {
         event.preventDefault();
-        upload(this.state.form/* , (event) => {
-            console.log('upload callback', event);
-        } */)
+        const data = this.state.form;
+        upload(data, (event) => {
+            if (this.props.onUploadEvent) this.props.onUploadEvent(event);
+        });
+        if (this.props.onUploadBegin) this.props.onUploadBegin(data);
     };
 
     render() {
@@ -119,7 +122,7 @@ class HomeForm extends Component {
                                     <input onChange={this.addFiles} id='input-file' type='file' multiple />
                                     {
                                         files.length ? <span className="app-upload-description text-uppercase">Add more files</span> : <span>
-                                            <span className='app-upload-icon' />
+                                            <span className='app-upload-icon'><i className="icon-picture-streamline" />></span>
                                             <span className='app-upload-description'>Drag and drop your files here</span>
                                         </span>
                                     }
@@ -155,8 +158,13 @@ class HomeForm extends Component {
                     </div>
                 </form>
             </div>
-        )
-    }
-}
+        );
+    };
+};
+
+HomeForm.propTypes = {
+    onUploadBegin: PropTypes.func,
+    onUploadEvent: PropTypes.func
+};
 
 export default HomeForm;
