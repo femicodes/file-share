@@ -26,6 +26,7 @@ const upload = (form, callback = () => { }) => {
 
   axios.post(url, data, config)
     .then(response => {
+      console.log(response.data);
       return callback({
         type: 'success',
         payload: response.data

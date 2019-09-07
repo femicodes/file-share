@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/upload', upload.array('files'), Files.uploadFile);
-router.get('/download/:name', Files.download);
+router.get('/download/:id', Files.download);
+router.get('/post/:id', Files.getPost);
 
 export default router;

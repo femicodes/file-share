@@ -1,10 +1,12 @@
 import React, { Component, Fragment } from 'react';
+import _ from 'lodash';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export class HomeUploadSent extends Component {
   render() {
-    const { upload, onSendAnotherFile, form } = this.props;
-    console.log(upload);
+    const { upload, onSendAnotherFile, form, history } = this.props;
+    const data = upload.payload;
     return (
       <div className='app-card app-card-uploading'>
         <div className='app-card-content'>
@@ -20,7 +22,7 @@ export class HomeUploadSent extends Component {
                 </div>
 
                 <div className="app-upload-sent-actions app-form-actions">
-                  <button className="app-button primary" type="button">View file</button>
+                  <button onClick={() => history.push(`share/${data.data._id}`)} className="app-button primary" type="button">View file</button>
                   <button onClick={() => onSendAnotherFile(true)} className="app-button" type="button">Send another file</button>
                 </div>
               </Fragment> : <div className="app-upload-sent-message app-text-center">
@@ -44,4 +46,4 @@ HomeUploadSent.propTypes = {
   form: PropTypes.object
 }
 
-export default HomeUploadSent;
+export default withRouter(HomeUploadSent);
