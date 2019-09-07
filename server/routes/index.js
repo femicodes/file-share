@@ -12,5 +12,6 @@ router.get('/', (req, res) => {
 router.post('/upload', upload.array('files'), Files.uploadFile);
 router.get('/download/:id', Files.download);
 router.get('/post/:id', Files.getPost);
+router.get('/post/:id/download', Files.downloadZip);
 
 export default router;

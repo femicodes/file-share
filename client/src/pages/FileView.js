@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import _ from 'lodash';
 import { getDownloadInfo } from '../helpers/download';
 import { getSize } from '../helpers/getSize';
@@ -36,12 +37,14 @@ export class FileView extends Component {
 
   render() {
     const apiUrl = `http://localhost:9000`;
-    const { files } = this.state;
-    const totalSize = this.getDownloadSize()
+    const { files, post } = this.state;
+    const { history } = this.props;
+    const totalSize = this.getDownloadSize();
     return (
       <div className="app-page-download">
         <div className="app-top-header">
-          <h1><i className={'icon-paper-plane'} /> SHARE</h1>
+          <h1 onClick={() => history.push('/')}>
+            <i className={'icon-paper-plane'} /> SHARE</h1>
         </div>
         <div className="app-card app-card-upload-sent">
           <div className="app-card-content">
@@ -69,7 +72,7 @@ export class FileView extends Component {
               </div>
 
               <div className="app-download-actions app-form-actions">
-                <button className="app-button primary" type="button">Download All</button>
+                <a href={`${apiUrl}/post/${post._id}/download`} className="app-button primary" type="button">Download All</a>
                 <button className="app-button" type="button">Share</button>
               </div>
 
@@ -81,4 +84,4 @@ export class FileView extends Component {
   };
 };
 
-export default FileView;
+export default withRouter(FileView);
