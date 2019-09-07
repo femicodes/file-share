@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import _ from 'lodash';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
