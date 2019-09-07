@@ -4,6 +4,7 @@ import _ from 'lodash';
 import File from '../models/File';
 import Post from '../models/Post';
 import Response from '../utils/Response';
+import archive from '../config/archiver';
 
 class Files {
   static async uploadFile(req, res) {
@@ -62,6 +63,20 @@ class Files {
       const post = await Post.findById(id);
       if (!post) return Response.error(res, 404, 'File not found');
       return Response.success(res, 200, post, 'Successful');
+    } catch (error) {
+      return Response.error(res, 400, 'An error occured');
+    }
+  }
+
+  static async downloadZip(req, res) {
+    try {
+      const { id } = req.params;
+      const data = await Post.findById(id);
+      if (!data) return Response.error(res, 404, 'File not found');
+      const { files } = data;
+      const archiver = archive(files, res);
+      return archiver;
+      /* return Response.success(res, 200, data, 'Successful'); */
     } catch (error) {
       return Response.error(res, 400, 'An error occured');
     }
