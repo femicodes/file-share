@@ -5,9 +5,9 @@ import upload from '../helpers/upload';
 class HomeForm extends Component {
     state = {
         form: {
-            to: 'femi@gmail.com',
-            from: 'code@gmail.com',
-            message: 'yess',
+            to: '',
+            from: '',
+            message: '',
             files: []
         },
         errors: {

@@ -5,6 +5,7 @@ import File from '../models/File';
 import Post from '../models/Post';
 import Response from '../utils/Response';
 import archive from '../config/archiver';
+import sendMail from '../config/email';
 
 class Files {
   static async uploadFile(req, res) {
@@ -34,6 +35,7 @@ class Files {
 
       await post.save();
       const malone = await Post.populate(post, { path: 'files' });
+      sendMail(malone.from, malone.to, malone.message, malone._id);
       return Response.success(res, 201, malone);
     } catch (error) {
       return Response.error(res, 400, 'An error occured');
