@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import upload from '../utils/upload';
+import upload from '../helpers/upload';
 
 class HomeForm extends Component {
     state = {

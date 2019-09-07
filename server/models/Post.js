@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose';
+import mongooseAutopopulate from 'mongoose-autopopulate';
 
 const PostSchema = Schema({
   from: {
@@ -13,6 +14,7 @@ const PostSchema = Schema({
   files: [{
     type: Schema.Types.ObjectId,
     ref: 'File',
+    autopopulate: true,
   }],
   createdAt: {
     type: Date,
@@ -20,6 +22,7 @@ const PostSchema = Schema({
   },
 });
 
+PostSchema.plugin(mongooseAutopopulate);
 const Post = model('Post', PostSchema);
 
 export default Post;
